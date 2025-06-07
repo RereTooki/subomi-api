@@ -16,6 +16,11 @@ import sqlite3
 from googleapiclient.discovery import build
 from fastapi.middleware.cors import CORSMiddleware
 
+import os
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+
 
 app = FastAPI(title="Student Performance Prediction API")
 
@@ -66,21 +71,21 @@ def recommend_books(subject_title, top_n=5):
 
 
 
-with open("C:/Users/HomePC/Desktop/subomi-api/Ridge_Regressor_Second_Model.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "Ridge_Regressor_Second_Model.pkl"), "rb") as file:
     potential_score_ridge_model = pickle.load(file)
 print(potential_score_ridge_model)
 
 
-with open("C:/Users/HomePC/Desktop/subomi-api/Lasso_Regressor_Second_Model.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "Lasso_Regressor_Second_Model.pkl"), "rb") as file:
     potential_score_lasso_model = pickle.load(file)
 print(potential_score_lasso_model)
 
-with open("C:/Users/HomePC/Desktop/subomi-api/Ridge_Regressor_Studyhours_Model.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "Ridge_Regressor_Studyhours_Model.pkl"), "rb") as file:
     study_hours_ridge_model = pickle.load(file)
 print(study_hours_ridge_model)
 
 
-with open("C:/Users/HomePC/Desktop/subomi-api/Lasso_Regressor_Studyhours_Model.pkl", "rb") as file:
+with open(os.path.join(BASE_DIR, "Lasso_Regressor_Studyhours_Model.pkl"), "rb") as file:
     study_hours_lasso_model = pickle.load(file)
 print(study_hours_lasso_model)
 
