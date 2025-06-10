@@ -24,6 +24,10 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = FastAPI(title="Student Performance Prediction API")
 
+@app.get("/")
+def read_root():
+    return {"status": "Subomi API is up and running!"}
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
