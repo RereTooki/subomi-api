@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException, Depends
+from fastapi import FastAPI, Request, HTTPException, Depends
 from pydantic import BaseModel, EmailStr
 from typing import List, Optional
 import uvicorn
@@ -24,8 +24,9 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 app = FastAPI(title="Student Performance Prediction API")
 
-@app.get("/")
-def read_root():
+
+@app.api_route("/", methods=["GET", "HEAD"])
+async def root(request: Request):
     return {"status": "Subomi API is up and running!"}
 
 # Add CORS middleware
